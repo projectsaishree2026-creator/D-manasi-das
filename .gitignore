@@ -89,3 +89,4 @@ uploads/
 # ----------------------------
 tmp/
 temp/
+node_modules

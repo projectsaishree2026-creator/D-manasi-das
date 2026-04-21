@@ -175,14 +175,14 @@ body {
     position: relative;
     z-index: 2;
   }
-  .card-stroke { background-image: url('/images/services/stroke.png'); }
-  .card-parkinsons-disease { background-image: url('/images/services/parkinsons-disease.png'); }
-  .card-epilepsy { background-image: url('/images/services/epilepsy.png'); }
-  .card-multiple-sclerosis { background-image: url('/images/services/multiple-sclerosis.png'); }
-  .card-headache-migraine { background-image: url('/images/services/headache-migraine.png'); }
-  .card-neuropathies { background-image: url('/images/services/neuropathies.png'); }
-  .card-alzheimers { background-image: url('/images/services/alzheimers.png'); }
-  .card-brain-nerve-science { background-image: url('/images/services/brain-nerve-science.png'); }
+  .card-stroke { background-image: url('/images/services/stroke.webp'); }
+  .card-parkinsons-disease { background-image: url('/images/services/parkinsons-disease.webp'); }
+  .card-epilepsy { background-image: url('/images/services/epilepsy.webp'); }
+  .card-multiple-sclerosis { background-image: url('/images/services/multiple-sclerosis.webp'); }
+  .card-headache-migraine { background-image: url('/images/services/headache-migraine.webp'); }
+  .card-neuropathies { background-image: url('/images/services/neuropathies.webp'); }
+  .card-alzheimers { background-image: url('/images/services/alzheimers.webp'); }
+  .card-brain-nerve-science { background-image: url('/images/services/brain-nerve-science.webp'); }
 
   .card-service h2, .card-service span > svg, .card-service a {
     color: white !important;

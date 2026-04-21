@@ -26,7 +26,7 @@ export default function ServicesContent() {
               <motion.div variants={fadeInUp}>
                 <div 
                   className={`card-base card-service p-8 lg:p-10 relative overflow-hidden group hover:-translate-y-1 transition-all duration-300`}
-                  style={{ backgroundImage: `url('/images/services/${featuredService.slug}.png')` }}
+                  style={{ backgroundImage: `url('/images/services/${featuredService.slug}.webp')` }}
                 >
                   {/* Decorative background blob */}
                   <div className={`card-bg-blob absolute top-0 right-0 w-64 h-64 ${colors.bg} rounded-full blur-3xl opacity-25 -translate-y-16 translate-x-16 pointer-events-none`} />
@@ -93,7 +93,7 @@ export default function ServicesContent() {
                 <motion.div key={service.slug} variants={scaleIn}>
                   <div 
                     className={`card-base card-service p-7 group hover:-translate-y-1 transition-all duration-300 h-full`}
-                    style={{ backgroundImage: `url('/images/services/${service.slug}.png')` }}
+                    style={{ backgroundImage: `url('/images/services/${service.slug}.webp')` }}
                   >
                     {/* Top row */}
                     <div className="flex items-start gap-4 mb-5">
