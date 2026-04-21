@@ -110,7 +110,7 @@ export default function Hero() {
               
               {/* Background Image */}
               <Image 
-                src="/images/doctor/Dr-image-2.webp" 
+                src="/images/doctor/Dr-image-20.webp" 
                 alt="Dr. Manasi Das — Expert Neurologist in Cuttack and Bhubaneswar, Odisha, specialising in Stroke, Epilepsy and Parkinson's Disease treatment"
                 fill
                 className="object-cover object-top transition-transform duration-700 ease-out lg:group-hover:scale-105 data-[active=true]:scale-[1.02]"

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "Trusted by 5000+ patients for Stroke, Epilepsy, Parkinson's & Migraine care. Sai Shree Polyclinic, Cuttack.",
     url: 'https://drmanasidas.com',
-    images: [{ url: '/images/doctor/Dr-image-2.webp', width: 1200, height: 630, alt: 'Dr. Manasi Das — Neurologist Cuttack Odisha' }],
+    images: [{ url: '/images/doctor/Dr-image-20.webp', width: 1200, height: 630, alt: 'Dr. Manasi Das — Neurologist Cuttack Odisha' }],
   },
 }
 

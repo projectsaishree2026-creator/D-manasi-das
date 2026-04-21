@@ -25,7 +25,7 @@ export default function AboutPreview() {
               
               {/* Image with parallax-like slight scale */}
               <Image 
-                src="/images/doctor/Dr-image-5.webp" 
+                src="/images/doctor/Dr-image-50.webp" 
                 alt="Dr. Manasi Das - Neurologist"
                 fill
                 className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"

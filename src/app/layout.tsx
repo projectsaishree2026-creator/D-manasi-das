@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     images: [
       {
-        url: '/images/doctor/Dr-image-2.webp',
+        url: '/images/doctor/Dr-image-20.webp',
         width: 1200,
         height: 630,
         alt: 'Dr. Manasi Das — Expert Neurologist in Cuttack & Bhubaneswar, Odisha',
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: 'Best Neurologist in Cuttack | Dr. Manasi Das',
     description:
       "Expert care for Stroke, Epilepsy, Parkinson's & more. Trusted by 5000+ patients across Odisha.",
-    images: ['/images/doctor/Dr-image-2.webp'],
+    images: ['/images/doctor/Dr-image-20.webp'],
   },
   alternates: {
     canonical: SITE_CONFIG.url,
