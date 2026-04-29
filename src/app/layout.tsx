@@ -96,6 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-IN">
       <head>
+      <meta name="google-site-verification" content="fwkHXsUvTwtiNJaNOPAnDBvjkanRGUTWYsa2TUqBFX8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Global JSON-LD Structured Data — Physician + Clinic + WebSite */}
