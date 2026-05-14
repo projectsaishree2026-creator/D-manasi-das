@@ -17,7 +17,7 @@ const contactCards = [
     icon: MapPin,
     title: 'Clinic Address',
     lines: [SITE_CONFIG.clinic.name, SITE_CONFIG.clinic.address],
-    action: { label: 'Get Directions', href: 'https://maps.google.com/?q=Sai+Shree+Polyclinic,+Cuttack' },
+    action: { label: 'Get Directions', href: 'https://maps.google.com/?q=Kathagola+Rd,+near+shreema+Hospital,+Mangalabag,+Cuttack,+Odisha+753001,+Sai+Shree+Poly+Clinic' },
     color: 'bg-[#DBEAFE] text-blue-600',
   },
   {

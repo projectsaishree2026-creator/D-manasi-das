@@ -79,10 +79,10 @@ const odishaSchema = {
       priceRange: '₹₹',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'At- Kathagola, Ring Rd, near Shree Maa',
+        streetAddress: 'Kathagola Rd, near shreema Hospital, Mangalabag',
         addressLocality: 'Cuttack',
         addressRegion: 'Odisha',
-        postalCode: '753110',
+        postalCode: '753001',
         addressCountry: 'IN',
       },
       geo: { '@type': 'GeoCoordinates', latitude: 20.4625, longitude: 85.883 },
@@ -355,7 +355,7 @@ export default function ClinicInOdishaPage() {
                 <span className="gradient-text">Cuttack, Odisha</span>
               </h2>
               <p className="text-neutral-600 font-outfit">
-                Centrally located for patients from across Odisha · Cuttack, Odisha 753110
+                Centrally located for patients from across Odisha · Cuttack, Odisha 753001
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-md" style={{ height: 400 }}>

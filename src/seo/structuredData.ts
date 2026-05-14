@@ -56,20 +56,20 @@ export function getDoctorStructuredData() {
         name: SITE_CONFIG.clinic.name,
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'At- Kathagola, Ring Rd, near Shree Maa',
+          streetAddress: 'Kathagola Rd, near shreema Hospital, Mangalabag',
           addressLocality: 'Cuttack',
           addressRegion: 'Odisha',
-          postalCode: '753110',
+          postalCode: '753001',
           addressCountry: 'IN',
         },
       },
     ],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'At- Kathagola, Ring Rd, near Shree Maa',
+      streetAddress: 'Kathagola Rd, near shreema Hospital, Mangalabag',
       addressLocality: 'Cuttack',
       addressRegion: 'Odisha',
-      postalCode: '753110',
+      postalCode: '753001',
       addressCountry: 'IN',
     },
     areaServed: [
@@ -104,10 +104,10 @@ export function getClinicStructuredData() {
     priceRange: '₹₹',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'At- Kathagola, Ring Rd, near Shree Maa',
+      streetAddress: 'Kathagola Rd, near shreema Hospital, Mangalabag',
       addressLocality: 'Cuttack',
       addressRegion: 'Odisha',
-      postalCode: '753110',
+      postalCode: '753001',
       addressCountry: 'IN',
     },
     geo: {

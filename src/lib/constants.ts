@@ -9,9 +9,9 @@ export const SITE_CONFIG = {
   whatsapp: '9692579904',
   clinic: {
     name: 'SAI SHREE POLYCLINIC',
-    address: 'At- Kathagola, Ring Rd, near Shree Maa, Cuttack, Odisha 753110',
+    address: 'Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001',
     mapUrl:
-      'https://maps.google.com/maps?q=Sai+Shree+Polyclinic,+Kathagola,+Ring+Rd,+near+Shree+Maa,+Cuttack,+Odisha+753110&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      'https://maps.google.com/maps?q=Kathagola+Rd,+near+shreema+Hospital,+Mangalabag,+Cuttack,+Odisha+753001,+Sai+Shree+Poly+Clinic&t=&z=15&ie=UTF8&iwloc=&output=embed',
   },
   hospital: {
     name: 'IMS & SUM Hospital',
@@ -307,7 +307,7 @@ export const FAQS = [
   },
   {
     q: 'Where is SAI SHREE POLYCLINIC located?',
-    a: 'SAI SHREE POLYCLINIC is located At- Kathagola, Ring Rd, near Shree Maa, Cuttack, Odisha 753110.',
+    a: 'SAI SHREE POLYCLINIC is located at Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001.',
   },
   {
     q: 'Does Dr. Das see patients at IMS & SUM Hospital?',
@@ -323,7 +323,7 @@ export const FAQS = [
   },
   {
     q: 'What is the best neurology clinic in Cuttack?',
-    a: 'Sai Shree Polyclinic at Kathagola, Ring Road, Cuttack is one of the premier neurology clinics in Cuttack, Odisha, led by Dr. Manasi Das, MD (Medicine), DM (Neurology).',
+    a: 'Sai Shree Polyclinic at Kathagola Rd, Cuttack is one of the premier neurology clinics in Cuttack, Odisha, led by Dr. Manasi Das, MD (Medicine), DM (Neurology).',
   },
   {
     q: 'Does Dr. Das treat patients from outside Cuttack?',
@@ -343,7 +343,7 @@ export const FAQS = [
   },
   {
     q: 'Is parking available at Sai Shree Polyclinic, Cuttack?',
-    a: 'Yes. Sai Shree Polyclinic on Ring Road, Cuttack has parking available nearby. The clinic is easily accessible by auto-rickshaw, private vehicle, and ride-share apps from all parts of Cuttack and from Bhubaneswar.',
+    a: 'Yes. Sai Shree Polyclinic on Kathagola Rd, Cuttack has parking available nearby. The clinic is easily accessible by auto-rickshaw, private vehicle, and ride-share apps from all parts of Cuttack and from Bhubaneswar.',
   },
 ]
 
@@ -410,7 +410,7 @@ export const LOCAL_PAGES = [
 export const VOICE_FAQS = [
   {
     q: 'Who is the best neurologist near me in Cuttack?',
-    a: 'Dr. Manasi Das at Sai Shree Polyclinic, Kathagola, Ring Road, Cuttack is one of the top neurologists in Cuttack, Odisha.',
+    a: 'Dr. Manasi Das at Sai Shree Polyclinic, Kathagola Rd, Cuttack is one of the top neurologists in Cuttack, Odisha.',
   },
   {
     q: 'Where can I find a neurologist in Bhubaneswar?',
@@ -438,7 +438,7 @@ export const VOICE_FAQS = [
   },
   {
     q: 'What is the address of Sai Shree Polyclinic Cuttack?',
-    a: 'Sai Shree Polyclinic is at Kathagola, Ring Road, near Shree Maa, Cuttack, Odisha — PIN 753110.',
+    a: 'Sai Shree Polyclinic is at Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001.',
   },
   {
     q: "Who treats Parkinson's disease in Cuttack?",
