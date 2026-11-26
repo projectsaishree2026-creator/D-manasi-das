@@ -153,7 +153,7 @@ export default function Testimonials() {
                   <Star key={s} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                 ))}
               </div>
-              <p className="text-[#0369A1] text-sm font-medium mt-0.5 font-outfit">5000+ patients trust Dr. Manasi Das</p>
+              <p className="text-[#0369A1] text-sm font-medium mt-0.5 font-outfit">Patients from across Odisha</p>
             </div>
           </div>
         </motion.div>

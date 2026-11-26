@@ -1,14 +1,16 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/seo/metadata'
+import { jsonLd } from '@/seo/structuredData'
 import Link from 'next/link'
 import { Phone, MapPin, Calendar, CheckCircle, Star, MessageCircle, Clock, Shield, Award, Users } from 'lucide-react'
 import { SITE_CONFIG, SERVICES, DOCTOR } from '@/lib/constants'
 import AnimatedSection from '@/components/common/AnimatedSection'
 import CTA from '@/components/sections/home/CTA'
 
-export const metadata: Metadata = {
-  title: 'Best Neurologist in Cuttack | Dr. Manasi Das — Book Appointment Today',
-  description:
-    "Looking for the best neurologist in Cuttack? Dr. Manasi Das, MD (Medicine), DM (Neurology) offers expert care at Sai Shree Polyclinic for Stroke, Epilepsy, Parkinson's & Migraine. Call 9692579904 for same-day consultation.",
+export const metadata: Metadata = pageMetadata({
+  title: "Best Neurologist in Cuttack, Odisha",
+  description: "Dr. Manasi Das, MD, DM (Neurology) — neurologist in Cuttack for stroke, epilepsy, Parkinson's & migraine at Sai Shree Polyclinic. Call 9692579904 to book.",
+  path: '/doctor-in-cuttack',
   keywords: [
     'best neurologist in Cuttack',
     'doctor in Cuttack',
@@ -23,27 +25,16 @@ export const metadata: Metadata = {
     'neurology specialist Cuttack Odisha',
     'Parkinson disease treatment Cuttack',
   ],
-  alternates: {
-    canonical: 'https://drmanasidas.com/doctor-in-cuttack',
-  },
-  openGraph: {
-    title: 'Best Neurologist in Cuttack | Dr. Manasi Das — MD, DM (Neurology)',
-    description:
-      'Expert neurological care at Sai Shree Polyclinic, Cuttack. Trusted by 5000+ patients across Odisha. Call 9692579904.',
-    url: 'https://drmanasidas.com/doctor-in-cuttack',
-    type: 'website',
-    locale: 'en_IN',
-  },
-}
+})
 
 const CUTTACK_FAQS = [
   {
     q: 'Who is the best neurologist in Cuttack?',
-    a: "Dr. Manasi Das, MD (Medicine), DM (Neurology) is widely regarded as one of the best neurologists in Cuttack. She practises at Sai Shree Polyclinic, Kathagola Rd, Cuttack and also serves as an Assistant Professor at IMS & SUM Hospital, Bhubaneswar.",
+    a: "Dr. Manasi Das, MD (Medicine), DM (Neurology) is a neurologist in Cuttack. She practises at Sai Shree Polyclinic, Kathagola Rd, Cuttack and also serves as an Assistant Professor at IMS & SUM Hospital, Bhubaneswar.",
   },
   {
     q: "Where is Dr. Manasi Das's neurology clinic in Cuttack?",
-    a: "Dr. Manasi Das's clinic is Sai Shree Polyclinic, located at Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001. It is easily accessible by auto-rickshaw and private vehicle.",
+    a: "Dr. Manasi Das's clinic is Sai Shree Polyclinic, located at Kathagola Rd, near Shreema Hospital, Mangalabag, Cuttack, Odisha 753001. It is easily accessible by auto-rickshaw and private vehicle.",
   },
   {
     q: 'How do I book an appointment with a neurologist in Cuttack?',
@@ -67,34 +58,14 @@ const cuttackSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'MedicalClinic',
-      '@id': 'https://drmanasidas.com/doctor-in-cuttack#clinic',
-      name: 'Sai Shree Polyclinic — Dr. Manasi Das, Neurologist in Cuttack',
-      description:
-        "Expert neurology clinic in Cuttack offering comprehensive care for Stroke, Epilepsy, Parkinson's, Migraine and all neurological conditions.",
-      url: 'https://drmanasidas.com/doctor-in-cuttack',
-      telephone: ['+919692579904', '+917008512773'],
-      email: 'drmanasidas@gmail.com',
-      medicalSpecialty: 'Neurology',
-      priceRange: '₹₹',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Kathagola Rd, near shreema Hospital, Mangalabag',
-        addressLocality: 'Cuttack',
-        addressRegion: 'Odisha',
-        postalCode: '753001',
-        addressCountry: 'IN',
-      },
-      geo: { '@type': 'GeoCoordinates', latitude: 20.4625, longitude: 85.883 },
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          opens: '09:00',
-          closes: '19:00',
-        },
-      ],
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '120', bestRating: '5' },
+      '@type': 'MedicalWebPage',
+      '@id': `${SITE_CONFIG.url}/doctor-in-cuttack#webpage`,
+      url: `${SITE_CONFIG.url}/doctor-in-cuttack`,
+      name: "Neurologist in Cuttack — Dr. Manasi Das",
+      inLanguage: 'en-IN',
+      about: { '@id': `${SITE_CONFIG.url}/#clinic` },
+      reviewedBy: { '@id': `${SITE_CONFIG.url}/#physician` },
+      isPartOf: { '@id': `${SITE_CONFIG.url}/#website` },
     },
     {
       '@type': 'FAQPage',
@@ -107,12 +78,12 @@ const cuttackSchema = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://drmanasidas.com' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_CONFIG.url}` },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Neurologist in Cuttack',
-          item: 'https://drmanasidas.com/doctor-in-cuttack',
+          item: `${SITE_CONFIG.url}/doctor-in-cuttack`,
         },
       ],
     },
@@ -126,7 +97,7 @@ export default function DoctorInCuttackPage() {
   return (
     <>
       {/* JSON-LD Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cuttackSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(cuttackSchema) }} />
 
       {/* ── HERO ── */}
       <AnimatedSection fadeOnly>
@@ -154,8 +125,8 @@ export default function DoctorInCuttackPage() {
                 <br />— Dr. Manasi Das
               </h1>
               <p className="text-lg text-neutral-600 leading-relaxed mb-8 max-w-2xl font-outfit">
-                MD (Medicine) · DM (Neurology) — Trusted by <strong>5000+ patients across Odisha</strong> for
-                expert neurological care at <strong>Sai Shree Polyclinic, Cuttack</strong>. Specialising in
+                MD (Medicine) · DM (Neurology) — seeing <strong>patients from across Odisha</strong> for
+                specialist neurological care at <strong>Sai Shree Polyclinic, Cuttack</strong>. Specialising in
                 Stroke, Epilepsy, Parkinson&apos;s, Migraine &amp; all brain and nerve conditions.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
@@ -190,7 +161,7 @@ export default function DoctorInCuttackPage() {
               <div className="flex flex-wrap gap-5">
                 {[
                   { icon: Shield, text: 'Evidence-Based Neurology' },
-                  { icon: Users, text: '5000+ Patients Treated' },
+                  { icon: Users, text: 'Patients from across Odisha' },
                   { icon: Clock, text: 'Mon – Sat · 9 AM – 7 PM' },
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex items-center gap-1.5 text-sm text-neutral-500 font-outfit">
@@ -219,20 +190,18 @@ export default function DoctorInCuttackPage() {
                   <span className="gradient-text">Cuttack, Odisha</span>
                 </h2>
                 <p className="text-neutral-600 leading-relaxed mb-4 font-outfit">
-                  Dr. Manasi Das is one of the most sought-after neurologists in Cuttack, combining
-                  academic expertise with compassionate clinical care. Holding MD (Medicine) and DM
-                  (Neurology), she brings a rare depth of knowledge to her private practice at Sai Shree
-                  Polyclinic.
+                  Dr. Manasi Das is a neurologist in Cuttack who combines academic training with
+                  compassionate clinical care. Holding MD (Medicine) and DM (Neurology), she sees
+                  patients in her private practice at Sai Shree Polyclinic.
                 </p>
                 <p className="text-neutral-600 leading-relaxed mb-6 font-outfit">
-                  As an Assistant Professor at IMS &amp; SUM Hospital, Bhubaneswar, Dr. Das stays at the
-                  forefront of neurological research — ensuring her Cuttack patients receive world-class,
-                  evidence-based care without needing to travel to a metro city.
+                  As an Assistant Professor at IMS &amp; SUM Hospital, Bhubaneswar, Dr. Das keeps up with
+                  current neurological practice — so her Cuttack patients receive evidence-based care without needing to travel to a metro city.
                 </p>
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {[
                     '10+ Years Experience',
-                    '5000+ Patients Treated',
+                    'Mon–Sat Clinic Hours',
                     'MD (Medicine) Qualified',
                     'DM (Neurology) Qualified',
                     'Academic Excellence',
@@ -256,11 +225,11 @@ export default function DoctorInCuttackPage() {
                     {
                       icon: MapPin,
                       label: 'Address',
-                      value: 'Sai Shree Polyclinic, Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack — 753001',
+                      value: 'Sai Shree Polyclinic, Kathagola Rd, near Shreema Hospital, Mangalabag, Cuttack, Odisha 753001',
                     },
                     { icon: Phone, label: 'Phone', value: '+91 9692579904 / +91 7008512773' },
                     { icon: Clock, label: 'Hours', value: 'Monday – Saturday · 9:00 AM – 7:00 PM' },
-                    { icon: Star, label: 'Rating', value: '4.9 / 5 · Trusted by 5000+ patients' },
+                    { icon: Star, label: 'Appointments', value: 'Call or WhatsApp to book · same-day slots often available' },
                   ].map(({ icon: Icon, label, value }) => (
                     <li key={label} className="flex gap-3">
                       <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center shadow-sm flex-shrink-0">
@@ -335,7 +304,7 @@ export default function DoctorInCuttackPage() {
                 <span className="gradient-text">Cuttack, Odisha</span>
               </h2>
               <p className="text-neutral-600 font-outfit">
-                Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001
+                {SITE_CONFIG.clinic.name}, {SITE_CONFIG.clinic.address}
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-md" style={{ height: 400 }}>

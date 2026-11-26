@@ -1,22 +1,15 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/seo/metadata'
 import PageHeader from '@/components/common/PageHeader'
 import BlogsContent from '@/components/sections/blogs/BlogsContent'
 import CTA from '@/components/sections/home/CTA'
 import AnimatedSection from '@/components/common/AnimatedSection'
 
-export const metadata: Metadata = {
-  title: 'Neurology Health Blog — Expert Tips for Patients in Cuttack & Odisha | Dr. Manasi Das',
-  description:
-    'Evidence-based articles on Stroke, Epilepsy, Parkinson\'s, Migraine & brain health from Dr. Manasi Das — neurologist in Cuttack, Bhubaneswar & across Odisha. Helping patients make informed neurological health decisions.',
-  alternates: {
-    canonical: 'https://drmanasidas.com/blogs',
-  },
-  openGraph: {
-    title: 'Neurology Health Blog | Dr. Manasi Das — Neurologist Cuttack, Odisha',
-    description: 'Expert neurology articles from Dr. Manasi Das for patients across Cuttack, Bhubaneswar & Odisha.',
-    url: 'https://drmanasidas.com/blogs',
-  },
-}
+export const metadata: Metadata = pageMetadata({
+  title: "Neurology Health Blog for Patients in Odisha",
+  description: "Articles on stroke, epilepsy, Parkinson's, migraine & brain health from Dr. Manasi Das, neurologist in Cuttack, for patients and families across Odisha.",
+  path: "/blogs"
+})
 
 export default function BlogsPage() {
   return (

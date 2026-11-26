@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { SITE_CONFIG } from '@/lib/constants'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,7 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/'],
       },
     ],
-    sitemap: 'https://drmanasidas.com/sitemap.xml',
-    host: 'https://drmanasidas.com',
+    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
   }
 }

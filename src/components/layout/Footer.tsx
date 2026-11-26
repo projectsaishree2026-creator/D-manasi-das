@@ -58,7 +58,10 @@ export default function Footer() {
                 { icon: Instagram, href: SITE_CONFIG.social.instagram, label: 'Instagram' },
                 { icon: Twitter, href: SITE_CONFIG.social.twitter, label: 'Twitter' },
                 { icon: Linkedin, href: SITE_CONFIG.social.linkedin, label: 'LinkedIn' },
-              ].map(({ icon: Icon, href, label }) => (
+              ]
+                // Hide placeholder profiles until real URLs are set in SITE_CONFIG.social
+                .filter(({ href }) => href && href !== '#')
+                .map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}

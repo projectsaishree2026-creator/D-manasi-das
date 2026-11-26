@@ -5,7 +5,8 @@ import CTA from '@/components/sections/home/CTA'
 import { SERVICES } from '@/lib/constants'
 import ServiceDetailContent from '@/components/sections/services/ServiceDetailContent'
 import AnimatedSection from '@/components/common/AnimatedSection'
-import { getServiceStructuredData } from '@/seo/structuredData'
+import { getServiceStructuredData, jsonLd } from '@/seo/structuredData'
+import { pageMetadata } from '@/seo/metadata'
 
 interface Props {
   params: { slug: string }
@@ -18,19 +19,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = SERVICES.find((s) => s.slug === params.slug)
   if (!service) return { title: 'Service Not Found' }
-  return {
-    title: `${service.title} Specialist in Cuttack, Odisha | Dr. Manasi Das — Book Today`,
-    description: `Expert ${service.title} treatment in Cuttack & Odisha. Dr. Manasi Das, DM (Neurology) — ${service.shortDesc} Call 9692579904 for same-day consultation at Sai Shree Polyclinic, Cuttack.`,
-    alternates: {
-      canonical: `https://drmanasidas.com/services/${service.slug}`,
-    },
-    openGraph: {
-      title: `${service.title} Specialist in Cuttack, Odisha | Dr. Manasi Das`,
-      description: service.shortDesc,
-      url: `https://drmanasidas.com/services/${service.slug}`,
-      type: 'website',
-    },
-  }
+  return pageMetadata({
+    title: `${service.title} Specialist in Cuttack`,
+    description: `${service.shortDesc} Dr. Manasi Das at Sai Shree Polyclinic, Cuttack. Call 9692579904.`,
+    path: `/services/${service.slug}`,
+  })
 }
 
 export default function ServiceDetailPage({ params }: Props) {
@@ -47,7 +40,7 @@ export default function ServiceDetailPage({ params }: Props) {
       {/* Per-service JSON-LD: MedicalCondition schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(serviceSchema) }}
       />
       <AnimatedSection fadeOnly>
         <PageHeader

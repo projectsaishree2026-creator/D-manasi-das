@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
-import { SERVICES, BLOGS } from '@/lib/constants'
+import { SERVICES, BLOGS, SITE_CONFIG } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://drmanasidas.com'
+  const baseUrl = SITE_CONFIG.url
   const now = new Date()
 
   const staticRoutes: MetadataRoute.Sitemap = [

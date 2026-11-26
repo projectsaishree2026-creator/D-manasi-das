@@ -37,9 +37,9 @@ export default function ServiceDetailContent({ service, prev, next }: Props) {
                 </div>
                 <div>
                   <span className={`badge mb-2 ${colors.text} ${colors.bg} border-0`}>{service.category}</span>
-                  <h1 className="text-3xl font-extrabold text-neutral-900 font-outfit">
+                  <h2 className="text-3xl font-extrabold text-neutral-900 font-outfit">
                     {service.title}
-                  </h1>
+                  </h2>
                 </div>
               </motion.div>
 

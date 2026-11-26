@@ -6,6 +6,14 @@ import { ArrowLeft, Calendar, Clock, Tag, Phone } from 'lucide-react'
 import PageHeader from '@/components/common/PageHeader'
 import CTA from '@/components/sections/home/CTA'
 import { BLOGS, SITE_CONFIG } from '@/lib/constants'
+import { pageMetadata } from '@/seo/metadata'
+import { getBlogPostingStructuredData, jsonLd } from '@/seo/structuredData'
+
+/** Trim to a search-snippet length at a word boundary. */
+function clip(text: string, max = 158) {
+  if (text.length <= max) return text
+  return text.slice(0, text.lastIndexOf(' ', max - 1)).replace(/[,;:—-]\s*$/, '') + '…'
+}
 
 interface Props {
   params: { slug: string }
@@ -18,10 +26,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blog = BLOGS.find((b) => b.slug === params.slug)
   if (!blog) return { title: 'Article Not Found' }
-  return {
-    title: `${blog.title} — Dr. Manasi Das`,
-    description: blog.excerpt,
-  }
+  return pageMetadata({
+    title: blog.title,
+    // Titles that already name the doctor skip the " | Dr. Manasi Das" suffix.
+    absolute: blog.title.includes('Manasi Das'),
+    description: clip(blog.excerpt),
+    path: `/blogs/${blog.slug}`,
+    ogType: 'article',
+  })
 }
 
 export default function BlogDetailPage({ params }: Props) {
@@ -31,6 +43,10 @@ export default function BlogDetailPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(getBlogPostingStructuredData(blog)) }}
+      />
       <div style={{ marginTop: 'var(--navbar-height)' }} className="relative page-bg">
         <div className="page-bg-overlay py-16 md:py-24">
           <div className="container-custom">

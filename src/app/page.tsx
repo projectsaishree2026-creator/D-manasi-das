@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/seo/metadata'
 import Hero from '@/components/sections/home/Hero'
 import AboutPreview from '@/components/sections/home/AboutPreview'
 import ServicesHighlight from '@/components/sections/home/ServicesHighlight'
@@ -7,21 +8,12 @@ import CTA from '@/components/sections/home/CTA'
 import AnimatedSection from '@/components/common/AnimatedSection'
 import { SITE_CONFIG } from '@/lib/constants'
 
-export const metadata: Metadata = {
-  title: 'Best Neurologist in Cuttack & Bhubaneswar | Dr. Manasi Das — Book Appointment',
-  description:
-    "Meet Dr. Manasi Das, MD (Medicine), DM (Neurology) — trusted by 5000+ patients in Cuttack, Bhubaneswar & across Odisha. Expert care for Stroke, Epilepsy, Parkinson's & Migraine at Sai Shree Polyclinic. Call 9692579904.",
-  alternates: {
-    canonical: 'https://drmanasidas.com',
-  },
-  openGraph: {
-    title: 'Best Neurologist in Cuttack & Bhubaneswar | Dr. Manasi Das',
-    description:
-      "Trusted by 5000+ patients for Stroke, Epilepsy, Parkinson's & Migraine care. Sai Shree Polyclinic, Cuttack.",
-    url: 'https://drmanasidas.com',
-    images: [{ url: '/images/doctor/Dr-image-20.webp', width: 1200, height: 630, alt: 'Dr. Manasi Das — Neurologist Cuttack Odisha' }],
-  },
-}
+export const metadata: Metadata = pageMetadata({
+  absolute: true,
+  title: "Best Neurologist in Cuttack & Bhubaneswar | Dr. Manasi Das",
+  description: "Dr. Manasi Das, MD, DM (Neurology) — neurologist in Cuttack & Bhubaneswar for stroke, epilepsy, Parkinson's & migraine. Sai Shree Polyclinic. Call 9692579904.",
+  path: "/"
+})
 
 export default function HomePage() {
   return (

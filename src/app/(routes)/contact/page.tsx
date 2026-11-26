@@ -1,21 +1,14 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/seo/metadata'
 import PageHeader from '@/components/common/PageHeader'
 import ContactContent from '@/components/sections/contact/ContactContent'
 import AnimatedSection from '@/components/common/AnimatedSection'
 
-export const metadata: Metadata = {
-  title: 'Book Appointment with Best Neurologist in Cuttack | Dr. Manasi Das — Call 9692579904',
-  description:
-    'Book a neurology consultation with Dr. Manasi Das at Sai Shree Polyclinic, Cuttack. Call 9692579904 or 7008512773 for Stroke, Epilepsy, Parkinson\'s & all neurological conditions. Same-day appointments available.',
-  alternates: {
-    canonical: 'https://drmanasidas.com/contact',
-  },
-  openGraph: {
-    title: 'Book Appointment — Dr. Manasi Das, Neurologist in Cuttack',
-    description: 'Call 9692579904 to book same-day neurology consultation at Sai Shree Polyclinic, Cuttack, Odisha.',
-    url: 'https://drmanasidas.com/contact',
-  },
-}
+export const metadata: Metadata = pageMetadata({
+  title: "Book a Neurologist Appointment in Cuttack",
+  description: "Book a neurology consultation with Dr. Manasi Das at Sai Shree Polyclinic, Cuttack (Mon–Sat, 9 AM–7 PM). Call 9692579904 or WhatsApp to book.",
+  path: "/contact"
+})
 
 export default function ContactPage() {
   return (

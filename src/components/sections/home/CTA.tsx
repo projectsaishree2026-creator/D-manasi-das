@@ -7,7 +7,7 @@ import { fadeInUp, staggerContainer } from '@/animations'
 
 export default function CTA() {
   const trustStats = [
-    { icon: Users, value: '5000+', label: 'Patients Treated' },
+    { icon: Users, value: 'Mon–Sat', label: 'Clinic Days' },
     { icon: Award, value: '8+', label: 'Conditions Treated' },
     { icon: Activity, value: '10+', label: 'Years Experience' },
     { icon: Clock, value: 'Same Day', label: 'Consultations' },

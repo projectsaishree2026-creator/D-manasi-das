@@ -3,15 +3,26 @@ export const SITE_CONFIG = {
   title: 'Dr. Manasi Das — Expert Neurologist in Cuttack, Odisha',
   description:
     'Consult Dr. Manasi Das, MD (Medicine), DM (Neurology), Asst. Professor at IMS & SUM Hospital. Expert care for Stroke, Epilepsy, Parkinson\'s, MS, Migraine & more.',
-  url: 'https://drmanasidas.com',
+  // Canonical origin: Vercel serves www and redirects the apex to it.
+  url: 'https://www.drmanasidas.com',
   phone: ['9692579904', '7008512773'],
   email: 'drmanasidas@gmail.com',
   whatsapp: '9692579904',
+  // NAP must match https://www.saishreepolyclinic.com/contact and the Google Business Profile exactly.
   clinic: {
-    name: 'SAI SHREE POLYCLINIC',
-    address: 'Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001',
+    name: 'Sai Shree Polyclinic',
+    streetAddress: 'Kathagola Rd, near Shreema Hospital, Mangalabag',
+    address: 'Kathagola Rd, near Shreema Hospital, Mangalabag, Cuttack, Odisha 753001',
+    phone: '7008512773',
+    email: 'saishreepolyclinic@gmail.com',
+    website: 'https://www.saishreepolyclinic.com/',
+    doctorProfileUrl: 'https://www.saishreepolyclinic.com/doctors/dr-manasi-das',
+    placeId: 'ChIJ2TOgzagTGToR7Sbpbc3FlhI',
+    mapsUrl:
+      'https://www.google.com/maps/search/?api=1&query=Sai+Shree+Polyclinic+Cuttack&query_place_id=ChIJ2TOgzagTGToR7Sbpbc3FlhI',
+    reviewsUrl: 'https://search.google.com/local/reviews?placeid=ChIJ2TOgzagTGToR7Sbpbc3FlhI',
     mapUrl:
-      'https://maps.google.com/maps?q=Kathagola+Rd,+near+shreema+Hospital,+Mangalabag,+Cuttack,+Odisha+753001,+Sai+Shree+Poly+Clinic&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      'https://maps.google.com/maps?q=Sai+Shree+Polyclinic,+Kathagola+Rd,+near+Shreema+Hospital,+Mangalabag,+Cuttack,+Odisha+753001&t=&z=15&ie=UTF8&iwloc=&output=embed',
   },
   hospital: {
     name: 'IMS & SUM Hospital',
@@ -33,21 +44,21 @@ export const DOCTOR = {
   specialization: 'Neurology',
   experience: '10+',
   patientsServed: '5000+',
-  bio: `Dr. Manasi Das is a distinguished Neurologist and Assistant Professor at IMS & SUM Hospital, Bhubaneswar — one of Odisha's premier medical institutions. With advanced qualifications in Medicine (MD) and Neurology (DM), she brings a rare combination of academic excellence and compassionate clinical care.
+  bio: `Dr. Manasi Das is a Neurologist and Assistant Professor at IMS & SUM Hospital, Bhubaneswar. With qualifications in Medicine (MD) and Neurology (DM), she combines academic training with careful, compassionate clinical care.
 
-Specialising in complex neurological conditions including Stroke, Parkinson's Disease, Epilepsy, Multiple Sclerosis, and Alzheimer's, Dr. Das is committed to delivering evidence-based treatment with a patient-first approach. Her practice at SAI SHREE POLYCLINIC in Cuttack serves patients from across Odisha seeking trusted neurological expertise.`,
+Specialising in complex neurological conditions including Stroke, Parkinson's Disease, Epilepsy, Multiple Sclerosis, and Alzheimer's, Dr. Das is committed to delivering evidence-based treatment with a patient-first approach. Her practice at Sai Shree Polyclinic in Cuttack serves patients from across Odisha.`,
   credentials: [
     { label: 'MD (Medicine)', institution: 'AIIMS / SCB Medical College', year: '' },
     { label: 'DM (Neurology)', institution: 'Advanced Neurology Training', year: '' },
     { label: 'Asst. Professor', institution: 'IMS & SUM Hospital, Bhubaneswar', year: 'Current' },
-    { label: 'Senior Neurologist', institution: 'SAI SHREE POLYCLINIC, Cuttack', year: 'Current' },
+    { label: 'Senior Neurologist', institution: 'Sai Shree Polyclinic, Cuttack', year: 'Current' },
   ],
   achievements: [
     'Specialist in Stroke Management & Prevention',
     'Expert in Movement Disorders (Parkinson\'s)',
     'Advanced training in Epilepsy & Seizure Management',
     'Academic excellence in Neurological Sciences',
-    'Trusted by 5000+ patients across Odisha',
+    'Sees patients from across Odisha',
   ],
 }
 
@@ -153,37 +164,37 @@ export const SERVICES = [
 export const TESTIMONIALS = [
   {
     id: 1,
-    name: 'Priya Mohanty',
+    name: 'Priya M.',
     location: 'Cuttack',
     rating: 5,
-    text: "Dr. Manasi Das diagnosed my mother's early-stage Parkinson's when three other doctors missed it. Her patience, clarity of explanation, and treatment plan gave our family real hope. Truly exceptional.",
+    text: "Dr. Manasi Das took the time to evaluate my mother's Parkinson's symptoms carefully. Her patience, clear explanations and treatment plan gave our family real confidence.",
     condition: "Parkinson's Disease",
     initials: 'PM',
   },
   {
     id: 2,
-    name: 'Rajesh Kumar Sahoo',
+    name: 'Rajesh S.',
     location: 'Bhubaneswar',
     rating: 5,
-    text: 'I suffered from severe migraines for 8 years. Dr. Das identified my triggers within one consultation and prescribed a preventive regimen that has reduced my attacks by 90%. Life-changing.',
+    text: 'I had suffered from migraines for years. Dr. Das helped me understand my triggers and started a preventive plan — my headaches are now much better controlled.',
     condition: 'Chronic Migraine',
     initials: 'RK',
   },
   {
     id: 3,
-    name: 'Sujata Panda',
+    name: 'Sujata P.',
     location: 'Kendrapara',
     rating: 5,
-    text: 'My son has epilepsy and we were terrified. Dr. Das was calm, thorough, and incredibly reassuring. His seizures are now fully controlled. We are eternally grateful.',
+    text: 'My son has epilepsy and we were very worried. Dr. Das was calm, thorough and reassuring, and explained every step of his treatment to us.',
     condition: 'Epilepsy',
     initials: 'SP',
   },
   {
     id: 4,
-    name: 'Ashok Rath',
+    name: 'Ashok R.',
     location: 'Puri',
     rating: 5,
-    text: "After my stroke, I was devastated. Dr. Das's immediate intervention and detailed rehabilitation plan helped me regain 95% of my function within six months. She is a miracle worker.",
+    text: "After my stroke I was devastated. Dr. Das's prompt care and detailed rehabilitation plan made a real difference to my recovery. I am grateful for her guidance.",
     condition: 'Stroke Recovery',
     initials: 'AR',
   },
@@ -238,18 +249,18 @@ export const BLOGS = [
     slug: 'best-neurologist-in-cuttack',
     title: 'Why Cuttack Patients Trust Dr. Manasi Das for Expert Neurological Care',
     excerpt:
-      'Cuttack residents seeking the best neurologist now have expert neurological care close to home. Learn what makes Dr. Manasi Das the trusted choice for brain and nerve conditions in Cuttack, Odisha.',
+      'Cuttack residents now have specialist neurological care close to home. Learn how Dr. Manasi Das approaches brain and nerve conditions at Sai Shree Polyclinic, Cuttack, Odisha.',
     category: 'Local Health',
     readTime: '4 min read',
     date: 'March 15, 2025',
     image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&fm=webp',
-    content: `Finding a trusted neurologist in Cuttack can make all the difference when managing complex neurological conditions. Dr. Manasi Das at Sai Shree Polyclinic, Cuttack combines academic excellence with compassionate patient care, ensuring every patient receives world-class neurological treatment close to home.`,
+    content: `Finding a trusted neurologist in Cuttack can make all the difference when managing complex neurological conditions. Dr. Manasi Das at Sai Shree Polyclinic, Cuttack combines academic excellence with compassionate patient care, so patients can receive specialist neurological treatment close to home.`,
   },
   {
     slug: 'stroke-treatment-cuttack-odisha',
     title: 'Stroke Treatment in Cuttack: What To Do in the Critical First Hour',
     excerpt:
-      "Every second counts after a stroke. Dr. Manasi Das, Cuttack's leading neurologist, explains what you must do in the first 60 minutes to maximise recovery outcomes for stroke patients in Odisha.",
+      "Every second counts after a stroke. Dr. Manasi Das, neurologist in Cuttack, explains what you must do in the first 60 minutes to maximise recovery outcomes for stroke patients in Odisha.",
     category: 'Stroke',
     readTime: '6 min read',
     date: 'February 20, 2025',
@@ -291,7 +302,7 @@ export const NAV_LINKS = [
 
 export const STATS = [
   { value: '10+', label: 'Years Experience' },
-  { value: '5000+', label: 'Patients Treated' },
+  { value: 'Mon–Sat', label: 'Clinic Days' },
   { value: '8', label: 'Specializations' },
   { value: '100%', label: 'Dedicated Care' },
 ]
@@ -299,19 +310,19 @@ export const STATS = [
 export const FAQS = [
   {
     q: 'How do I book an appointment with Dr. Manasi Das?',
-    a: 'You can call us directly at 9692579904 or 7008512773 to schedule a consultation at SAI SHREE POLYCLINIC, Cuttack.',
+    a: 'You can call us directly at 9692579904 or 7008512773 to schedule a consultation at Sai Shree Polyclinic, Cuttack.',
   },
   {
     q: 'What conditions does Dr. Das specialise in?',
     a: 'Dr. Das specialises in Stroke, Parkinson\'s Disease, Epilepsy, Multiple Sclerosis, Migraine, Neuropathies, Alzheimer\'s Disease, and general Brain & Nerve conditions.',
   },
   {
-    q: 'Where is SAI SHREE POLYCLINIC located?',
-    a: 'SAI SHREE POLYCLINIC is located at Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001.',
+    q: 'Where is Sai Shree Polyclinic located?',
+    a: 'Sai Shree Polyclinic is located at Kathagola Rd, near Shreema Hospital, Mangalabag, Cuttack, Odisha 753001.',
   },
   {
     q: 'Does Dr. Das see patients at IMS & SUM Hospital?',
-    a: 'Yes. Dr. Das is an Assistant Professor in the Department of Neurology at IMS & SUM Hospital, Bhubaneswar, and also consults at SAI SHREE POLYCLINIC in Cuttack.',
+    a: 'Yes. Dr. Das is an Assistant Professor in the Department of Neurology at IMS & SUM Hospital, Bhubaneswar, and also consults at Sai Shree Polyclinic in Cuttack.',
   },
   {
     q: 'What should I bring to my first neurology consultation?',
@@ -323,7 +334,7 @@ export const FAQS = [
   },
   {
     q: 'What is the best neurology clinic in Cuttack?',
-    a: 'Sai Shree Polyclinic at Kathagola Rd, Cuttack is one of the premier neurology clinics in Cuttack, Odisha, led by Dr. Manasi Das, MD (Medicine), DM (Neurology).',
+    a: 'Sai Shree Polyclinic on Kathagola Rd, Cuttack offers specialist neurology consultations with Dr. Manasi Das, MD (Medicine), DM (Neurology), Monday to Saturday.',
   },
   {
     q: 'Does Dr. Das treat patients from outside Cuttack?',
@@ -410,7 +421,7 @@ export const LOCAL_PAGES = [
 export const VOICE_FAQS = [
   {
     q: 'Who is the best neurologist near me in Cuttack?',
-    a: 'Dr. Manasi Das at Sai Shree Polyclinic, Kathagola Rd, Cuttack is one of the top neurologists in Cuttack, Odisha.',
+    a: 'Dr. Manasi Das, MD (Medicine), DM (Neurology), is a neurologist at Sai Shree Polyclinic, Kathagola Rd, Cuttack, Odisha.',
   },
   {
     q: 'Where can I find a neurologist in Bhubaneswar?',
@@ -430,7 +441,7 @@ export const VOICE_FAQS = [
   },
   {
     q: 'Can Dr. Manasi Das treat epilepsy in Odisha?',
-    a: 'Yes. Dr. Manasi Das is an expert epilepsy specialist practising at Sai Shree Polyclinic, Cuttack, and sees patients from across Odisha.',
+    a: 'Yes. Dr. Manasi Das treats epilepsy at Sai Shree Polyclinic, Cuttack, and sees patients from across Odisha.',
   },
   {
     q: 'Is there a stroke specialist in Cuttack?',
@@ -438,7 +449,7 @@ export const VOICE_FAQS = [
   },
   {
     q: 'What is the address of Sai Shree Polyclinic Cuttack?',
-    a: 'Sai Shree Polyclinic is at Kathagola Rd, near shreema Hospital, Mangalabag, Cuttack, Odisha 753001.',
+    a: 'Sai Shree Polyclinic is at Kathagola Rd, near Shreema Hospital, Mangalabag, Cuttack, Odisha 753001.',
   },
   {
     q: "Who treats Parkinson's disease in Cuttack?",

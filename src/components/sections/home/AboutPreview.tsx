@@ -50,8 +50,8 @@ export default function AboutPreview() {
                     <CheckCircle2 className="w-5 h-5 text-[#38BDF8]" />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-sm font-outfit leading-none mb-1">5000+</p>
-                    <p className="text-neutral-300 text-[10px] uppercase tracking-wider font-outfit">Patients</p>
+                    <p className="text-white font-bold text-sm font-outfit leading-none mb-1">10+</p>
+                    <p className="text-neutral-300 text-[10px] uppercase tracking-wider font-outfit">Years</p>
                   </div>
                 </div>
               </div>
@@ -128,9 +128,9 @@ export default function AboutPreview() {
             </motion.h2>
 
             <motion.p variants={fadeInUp} className="text-neutral-600 leading-relaxed mb-4 text-base font-outfit">
-              Dr. Manasi Das is a distinguished Neurologist and Assistant Professor at IMS &amp; SUM Hospital —
-              one of Odisha&apos;s premier medical institutions. With MD (Medicine) and DM (Neurology), she
-              combines academic excellence with compassionate clinical practice.
+              Dr. Manasi Das is a Neurologist and Assistant Professor at IMS &amp; SUM Hospital,
+              Bhubaneswar. With MD (Medicine) and DM (Neurology), she combines academic training with
+              compassionate clinical practice.
             </motion.p>
 
             <motion.p variants={fadeInUp} className="text-neutral-600 leading-relaxed mb-8 text-base font-outfit">

@@ -56,7 +56,7 @@ export default function Hero() {
               variants={fadeInUp}
               className="text-lg text-neutral-600 leading-relaxed mb-8 max-w-lg font-outfit"
             >
-              MD (Medicine) · DM (Neurology) — Trusted by 5000+ patients across Odisha for Stroke,
+              MD (Medicine) · DM (Neurology) — caring for patients from across Odisha with Stroke,
               Epilepsy, Parkinson&apos;s, Migraine, and all brain &amp; nerve conditions.
             </motion.p>
 
@@ -84,7 +84,7 @@ export default function Hero() {
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-5">
               {[
                 { icon: Shield, text: 'Evidence-Based Care' },
-                { icon: Users, text: '5000+ Patients Treated' },
+                { icon: Users, text: 'Patients from across Odisha' },
                 { icon: Clock, text: 'Same Day Consultation' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-1.5 text-sm text-neutral-500 font-outfit">

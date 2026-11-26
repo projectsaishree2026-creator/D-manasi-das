@@ -1,14 +1,16 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/seo/metadata'
+import { jsonLd } from '@/seo/structuredData'
 import Link from 'next/link'
 import { Phone, MapPin, Calendar, CheckCircle, MessageCircle, Clock, Shield, Award, Users, Globe } from 'lucide-react'
 import { SITE_CONFIG, SERVICES } from '@/lib/constants'
 import AnimatedSection from '@/components/common/AnimatedSection'
 import CTA from '@/components/sections/home/CTA'
 
-export const metadata: Metadata = {
-  title: 'Best Neurology Clinic in Odisha | Dr. Manasi Das — Sai Shree Polyclinic, Cuttack',
-  description:
-    "Odisha's trusted neurology clinic — Dr. Manasi Das, MD (Medicine), DM (Neurology) at Sai Shree Polyclinic, Cuttack. Serving patients from Bhubaneswar, Puri, Kendrapara, Balasore & across Odisha. Call 9692579904.",
+export const metadata: Metadata = pageMetadata({
+  title: "Best Neurology Clinic in Odisha",
+  description: "Neurology care for patients across Odisha at Sai Shree Polyclinic, Cuttack, with Dr. Manasi Das, DM (Neurology). Mon–Sat, 9 AM–7 PM. Call 9692579904.",
+  path: '/clinic-in-odisha',
   keywords: [
     'neurology clinic Odisha',
     'best neurologist Odisha',
@@ -23,27 +25,16 @@ export const metadata: Metadata = {
     'neurology hospital Odisha',
     'Dr Manasi Das Odisha',
   ],
-  alternates: {
-    canonical: 'https://drmanasidas.com/clinic-in-odisha',
-  },
-  openGraph: {
-    title: 'Best Neurology Clinic in Odisha | Dr. Manasi Das — Sai Shree Polyclinic',
-    description:
-      'Expert neurological care serving all of Odisha at Sai Shree Polyclinic, Cuttack. Trusted by patients from Bhubaneswar, Puri, Balasore and beyond.',
-    url: 'https://drmanasidas.com/clinic-in-odisha',
-    type: 'website',
-    locale: 'en_IN',
-  },
-}
+})
 
 const ODISHA_FAQS = [
   {
     q: 'Which is the best neurology clinic in Odisha?',
-    a: "Sai Shree Polyclinic in Cuttack, led by Dr. Manasi Das (MD, DM Neurology), is one of the leading neurology clinics in Odisha. It is centrally located in Cuttack, making it accessible to patients from cities and districts across the state.",
+    a: "Sai Shree Polyclinic in Cuttack, led by Dr. Manasi Das (MD, DM Neurology), offers specialist neurology consultations, Monday to Saturday. It is centrally located in Cuttack, making it accessible to patients from cities and districts across the state.",
   },
   {
     q: 'Does Dr. Manasi Das treat patients from across Odisha?',
-    a: "Yes. Dr. Manasi Das regularly sees patients from across Odisha — including Bhubaneswar, Puri, Kendrapara, Balasore, Sambalpur, Angul, Paradip, Berhampur, and other districts. The clinic's Cuttack location is well-connected by road and rail.",
+    a: "Yes. Dr. Manasi Das regularly sees patients from across Odisha — including Bhubaneswar, Puri, Kendrapara, Balasore, Sambalpur, Angul, Paradip, Berhampur, and other districts. Sai Shree Polyclinic in Cuttack is well-connected by road and rail.",
   },
   {
     q: 'How far is Sai Shree Polyclinic from Bhubaneswar?',
@@ -51,7 +42,7 @@ const ODISHA_FAQS = [
   },
   {
     q: 'Are there any neurologists in Odisha with DM Neurology qualification?',
-    a: "Dr. Manasi Das has DM (Neurology) — a super-speciality qualification that is relatively rare in Odisha. She is available for consultations at Sai Shree Polyclinic, Cuttack, and at IMS & SUM Hospital, Bhubaneswar.",
+    a: "Dr. Manasi Das has DM (Neurology) — a super-speciality qualification in neurology. She is available for consultations at Sai Shree Polyclinic, Cuttack, and at IMS & SUM Hospital, Bhubaneswar.",
   },
   {
     q: 'What districts in Odisha do patients travel from to see Dr. Manasi Das?',
@@ -67,42 +58,14 @@ const odishaSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'MedicalClinic',
-      '@id': 'https://drmanasidas.com/clinic-in-odisha#clinic',
-      name: 'Sai Shree Polyclinic — Best Neurology Clinic in Odisha',
-      description:
-        "Odisha's premier neurology clinic at Sai Shree Polyclinic, Cuttack, led by Dr. Manasi Das (DM Neurology). Serving patients from across Odisha.",
-      url: 'https://drmanasidas.com/clinic-in-odisha',
-      telephone: ['+919692579904', '+917008512773'],
-      email: 'drmanasidas@gmail.com',
-      medicalSpecialty: 'Neurology',
-      priceRange: '₹₹',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Kathagola Rd, near shreema Hospital, Mangalabag',
-        addressLocality: 'Cuttack',
-        addressRegion: 'Odisha',
-        postalCode: '753001',
-        addressCountry: 'IN',
-      },
-      geo: { '@type': 'GeoCoordinates', latitude: 20.4625, longitude: 85.883 },
-      areaServed: [
-        { '@type': 'State', name: 'Odisha' },
-        { '@type': 'City', name: 'Cuttack' },
-        { '@type': 'City', name: 'Bhubaneswar' },
-        { '@type': 'City', name: 'Puri' },
-        { '@type': 'City', name: 'Kendrapara' },
-        { '@type': 'City', name: 'Balasore' },
-      ],
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          opens: '09:00',
-          closes: '19:00',
-        },
-      ],
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '120', bestRating: '5' },
+      '@type': 'MedicalWebPage',
+      '@id': `${SITE_CONFIG.url}/clinic-in-odisha#webpage`,
+      url: `${SITE_CONFIG.url}/clinic-in-odisha`,
+      name: "Neurology Clinic in Odisha — Sai Shree Polyclinic, Cuttack",
+      inLanguage: 'en-IN',
+      about: { '@id': `${SITE_CONFIG.url}/#clinic` },
+      reviewedBy: { '@id': `${SITE_CONFIG.url}/#physician` },
+      isPartOf: { '@id': `${SITE_CONFIG.url}/#website` },
     },
     {
       '@type': 'FAQPage',
@@ -115,12 +78,12 @@ const odishaSchema = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://drmanasidas.com' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_CONFIG.url}` },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Neurology Clinic in Odisha',
-          item: 'https://drmanasidas.com/clinic-in-odisha',
+          item: `${SITE_CONFIG.url}/clinic-in-odisha`,
         },
       ],
     },
@@ -139,7 +102,7 @@ export default function ClinicInOdishaPage() {
   return (
     <>
       {/* JSON-LD Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(odishaSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(odishaSchema) }} />
 
       {/* ── HERO ── */}
       <AnimatedSection fadeOnly>
@@ -176,7 +139,7 @@ export default function ClinicInOdishaPage() {
                 <Link
                   href="/contact"
                   className="btn-primary text-base px-8 py-4"
-                  aria-label="Book an appointment at Odisha's best neurology clinic"
+                  aria-label="Book a neurology appointment at Sai Shree Polyclinic, Cuttack"
                 >
                   <Calendar className="w-5 h-5" />
                   Book Appointment
@@ -204,7 +167,7 @@ export default function ClinicInOdishaPage() {
               <div className="flex flex-wrap gap-5">
                 {[
                   { icon: Shield, text: 'DM Neurology Specialist' },
-                  { icon: Users, text: '5000+ Patients Served' },
+                  { icon: Users, text: 'Patients from across Odisha' },
                   { icon: Clock, text: 'Mon – Sat · 9 AM – 7 PM' },
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex items-center gap-1.5 text-sm text-neutral-500 font-outfit">
@@ -355,7 +318,7 @@ export default function ClinicInOdishaPage() {
                 <span className="gradient-text">Cuttack, Odisha</span>
               </h2>
               <p className="text-neutral-600 font-outfit">
-                Centrally located for patients from across Odisha · Cuttack, Odisha 753001
+                Centrally located for patients from across Odisha · {SITE_CONFIG.clinic.name}, {SITE_CONFIG.clinic.address}
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-md" style={{ height: 400 }}>
@@ -367,7 +330,7 @@ export default function ClinicInOdishaPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Sai Shree Polyclinic — best neurology clinic in Odisha, Cuttack location map"
+                title="Sai Shree Polyclinic, Cuttack — location map"
               />
             </div>
             <div className="flex flex-wrap justify-center gap-4 mt-6">

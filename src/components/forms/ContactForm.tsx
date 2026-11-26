@@ -22,6 +22,9 @@ I would like to book an appointment.
 `;
     const encodedText = encodeURIComponent(text);
     const whatsappURL = `https://wa.me/917008512773?text=${encodedText}`;
+    // GA4 conversion (no-op until NEXT_PUBLIC_GA_ID is set). No form contents or health details are sent.
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag
+    gtag?.('event', 'generate_lead', { method: 'contact_form_whatsapp' })
     window.open(whatsappURL, "_blank");
     reset();
   }

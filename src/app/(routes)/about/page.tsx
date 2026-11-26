@@ -1,22 +1,16 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/seo/metadata'
 import PageHeader from '@/components/common/PageHeader'
 import CTA from '@/components/sections/home/CTA'
 import AboutContent from '@/components/sections/about/AboutContent'
 import AnimatedSection from '@/components/common/AnimatedSection'
 
-export const metadata: Metadata = {
-  title: 'About Dr. Manasi Das — Best Neurologist in Cuttack & Bhubaneswar, Odisha',
-  description:
-    'Dr. Manasi Das, MD (Medicine), DM (Neurology), Asst. Professor at IMS & SUM Hospital — trusted neurologist in Cuttack and Bhubaneswar with 10+ years experience treating Stroke, Epilepsy, Parkinson\'s & more across Odisha.',
-  alternates: {
-    canonical: 'https://drmanasidas.com/about',
-  },
-  openGraph: {
-    title: 'About Dr. Manasi Das — Expert Neurologist in Cuttack & Bhubaneswar',
-    description: 'MD (Medicine) · DM (Neurology) · Asst. Professor IMS & SUM Hospital · Sai Shree Polyclinic, Cuttack.',
-    url: 'https://drmanasidas.com/about',
-  },
-}
+export const metadata: Metadata = pageMetadata({
+  absolute: true,
+  title: "About Dr. Manasi Das | Neurologist in Cuttack, Odisha",
+  description: "Dr. Manasi Das, MD (Medicine), DM (Neurology), Asst. Professor at IMS & SUM Hospital, consults at Sai Shree Polyclinic, Cuttack. 10+ years in neurology.",
+  path: "/about"
+})
 
 export default function AboutPage() {
   return (
@@ -26,7 +20,7 @@ export default function AboutPage() {
           badge="About the Doctor"
           title="Dr. Manasi Das"
           titleHighlight="MD · DM (Neurology)"
-          subtitle="Expert Neurologist and Asst. Professor at IMS & SUM Hospital, dedicated to delivering world-class neurological care across Odisha."
+          subtitle="Expert Neurologist and Asst. Professor at IMS & SUM Hospital, providing evidence-based neurological care for patients across Odisha."
         />
       </AnimatedSection>
       <AnimatedSection>

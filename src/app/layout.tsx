@@ -5,20 +5,23 @@ import Footer from '@/components/layout/Footer'
 import ScrollToTop from '@/components/layout/ScrollToTop'
 import WhatsAppButton from '@/components/common/WhatsAppButton'
 import MobileCTABar from '@/components/common/MobileCTABar'
+import Analytics from '@/components/common/Analytics'
 import { SITE_CONFIG } from '@/lib/constants'
+import { OG_IMAGE } from '@/seo/metadata'
 import {
   getDoctorStructuredData,
   getClinicStructuredData,
   getWebSiteStructuredData,
+  jsonLd,
 } from '@/seo/structuredData'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Best Neurologist in Cuttack & Bhubaneswar | Dr. Manasi Das — MD, DM (Neurology)',
-    template: '%s | Dr. Manasi Das — Neurologist Cuttack',
+    default: 'Best Neurologist in Cuttack & Bhubaneswar | Dr. Manasi Das',
+    template: '%s | Dr. Manasi Das',
   },
   description:
-    "Consult Dr. Manasi Das, MD (Medicine), DM (Neurology) — best neurologist in Cuttack & Bhubaneswar. Expert care for Stroke, Epilepsy, Parkinson's, Migraine & more at Sai Shree Polyclinic, Cuttack, Odisha. Call 9692579904.",
+    "Dr. Manasi Das, MD, DM (Neurology) — neurologist in Cuttack for stroke, epilepsy, Parkinson's & migraine at Sai Shree Polyclinic. Call 9692579904 to book.",
   keywords: [
     // Doctor + location
     'Dr Manasi Das', 'Dr Manasi Das Cuttack', 'Dr Manasi Das Bhubaneswar',
@@ -43,7 +46,7 @@ export const metadata: Metadata = {
     // Voice search
     'best neurologist near me Cuttack', 'neurology clinic near me Odisha',
   ],
-  authors: [{ name: 'Dr. Manasi Das', url: 'https://drmanasidas.com/about' }],
+  authors: [{ name: 'Dr. Manasi Das', url: `${SITE_CONFIG.url}/about` }],
   creator: 'Dr. Manasi Das',
   publisher: 'Dr. Manasi Das',
   category: 'Health, Neurology, Medical',
@@ -61,30 +64,21 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Best Neurologist in Cuttack & Bhubaneswar | Dr. Manasi Das',
     description:
-      "Expert neurological care for Stroke, Epilepsy, Parkinson's & more. Trusted by 5000+ patients across Odisha. Sai Shree Polyclinic, Cuttack.",
+      "Specialist care for stroke, epilepsy, Parkinson's, migraine & more for patients across Odisha. Sai Shree Polyclinic, Cuttack.",
     url: SITE_CONFIG.url,
     siteName: 'Dr. Manasi Das — Neurologist',
     type: 'website',
     locale: 'en_IN',
-    images: [
-      {
-        url: '/images/doctor/Dr-image-20.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Dr. Manasi Das — Expert Neurologist in Cuttack & Bhubaneswar, Odisha',
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Best Neurologist in Cuttack | Dr. Manasi Das',
     description:
-      "Expert care for Stroke, Epilepsy, Parkinson's & more. Trusted by 5000+ patients across Odisha.",
-    images: ['/images/doctor/Dr-image-20.webp'],
+      "Specialist care for stroke, epilepsy, Parkinson's, migraine & more for patients across Odisha.",
+    images: [OG_IMAGE.url],
   },
-  alternates: {
-    canonical: SITE_CONFIG.url,
-  },
+  // No site-wide canonical: each page sets its own via pageMetadata().
   metadataBase: new URL(SITE_CONFIG.url),
 }
 
@@ -102,15 +96,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Global JSON-LD Structured Data — Physician + Clinic + WebSite */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(doctorSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(doctorSchema) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(clinicSchema) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(websiteSchema) }}
         />
       </head>
       {/* pb-16 lg:pb-0 reserves space for the sticky mobile CTA bar on small screens */}
@@ -121,6 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppButton />
         <MobileCTABar />
+        <Analytics />
       </body>
     </html>
   )

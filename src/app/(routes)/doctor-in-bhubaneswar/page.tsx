@@ -1,14 +1,16 @@
 import { Metadata } from 'next'
+import { pageMetadata } from '@/seo/metadata'
+import { jsonLd } from '@/seo/structuredData'
 import Link from 'next/link'
 import { Phone, MapPin, Calendar, CheckCircle, MessageCircle, Clock, Shield, Award, Users, BookOpen } from 'lucide-react'
 import { SITE_CONFIG, SERVICES } from '@/lib/constants'
 import AnimatedSection from '@/components/common/AnimatedSection'
 import CTA from '@/components/sections/home/CTA'
 
-export const metadata: Metadata = {
-  title: 'Expert Neurologist in Bhubaneswar | Dr. Manasi Das — IMS & SUM Hospital',
-  description:
-    "Consulting Neurologist at IMS & SUM Hospital, Bhubaneswar — Dr. Manasi Das, MD (Medicine), DM (Neurology). Expert care for MS, Stroke, Epilepsy, Parkinson's & complex neurological disorders. Book now.",
+export const metadata: Metadata = pageMetadata({
+  title: "Neurologist in Bhubaneswar — IMS & SUM Hospital",
+  description: "Dr. Manasi Das, MD, DM (Neurology), Asst. Professor of Neurology at IMS & SUM Hospital, Bhubaneswar. Care for MS, stroke, epilepsy & Parkinson's. Book now.",
+  path: '/doctor-in-bhubaneswar',
   keywords: [
     'neurologist in Bhubaneswar',
     'best neurologist Bhubaneswar',
@@ -21,23 +23,12 @@ export const metadata: Metadata = {
     'MS specialist Bhubaneswar',
     'neurology clinic Bhubaneswar Odisha',
   ],
-  alternates: {
-    canonical: 'https://drmanasidas.com/doctor-in-bhubaneswar',
-  },
-  openGraph: {
-    title: 'Expert Neurologist in Bhubaneswar | Dr. Manasi Das | IMS & SUM Hospital',
-    description:
-      "Consultant Neurologist & Asst. Professor at IMS & SUM Hospital, Bhubaneswar. Expert care for complex neurological conditions across Odisha.",
-    url: 'https://drmanasidas.com/doctor-in-bhubaneswar',
-    type: 'website',
-    locale: 'en_IN',
-  },
-}
+})
 
 const BHUBANESWAR_FAQS = [
   {
     q: 'Does Dr. Manasi Das practice in Bhubaneswar?',
-    a: "Yes. Dr. Manasi Das is an Assistant Professor in the Department of Neurology at IMS & SUM Hospital, Bhubaneswar — one of Odisha's premier medical institutions. She also sees private patients at Sai Shree Polyclinic, Cuttack.",
+    a: "Yes. Dr. Manasi Das is an Assistant Professor in the Department of Neurology at IMS & SUM Hospital, Bhubaneswar. She also sees private patients at Sai Shree Polyclinic, Cuttack.",
   },
   {
     q: 'How can I consult Dr. Manasi Das in Bhubaneswar?',
@@ -66,11 +57,11 @@ const bhubaneswarSchema = {
   '@graph': [
     {
       '@type': 'Physician',
-      '@id': 'https://drmanasidas.com/doctor-in-bhubaneswar#physician',
+      '@id': `${SITE_CONFIG.url}/#physician`,
       name: 'Dr. Manasi Das',
       description:
         "Consultant Neurologist and Assistant Professor at IMS & SUM Hospital, Bhubaneswar. Expert in Stroke, Epilepsy, Multiple Sclerosis and complex neurological conditions.",
-      url: 'https://drmanasidas.com/doctor-in-bhubaneswar',
+      url: `${SITE_CONFIG.url}/doctor-in-bhubaneswar`,
       telephone: ['+919692579904', '+917008512773'],
       email: 'drmanasidas@gmail.com',
       medicalSpecialty: 'Neurology',
@@ -97,12 +88,12 @@ const bhubaneswarSchema = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://drmanasidas.com' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_CONFIG.url}` },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Neurologist in Bhubaneswar',
-          item: 'https://drmanasidas.com/doctor-in-bhubaneswar',
+          item: `${SITE_CONFIG.url}/doctor-in-bhubaneswar`,
         },
       ],
     },
@@ -119,7 +110,7 @@ export default function DoctorInBhubaneswarPage() {
   return (
     <>
       {/* JSON-LD Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bhubaneswarSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(bhubaneswarSchema) }} />
 
       {/* ── HERO ── */}
       <AnimatedSection fadeOnly>
@@ -148,8 +139,7 @@ export default function DoctorInBhubaneswarPage() {
               </h1>
               <p className="text-lg text-neutral-600 leading-relaxed mb-8 max-w-2xl font-outfit">
                 MD (Medicine) · DM (Neurology) — Assistant Professor at{' '}
-                <strong>IMS &amp; SUM Hospital, Bhubaneswar</strong>, one of Odisha&apos;s premier
-                medical institutions. Offering expert diagnosis and treatment for Stroke, MS,
+                <strong>IMS &amp; SUM Hospital, Bhubaneswar</strong>. Offering expert diagnosis and treatment for Stroke, MS,
                 Epilepsy, Parkinson&apos;s &amp; all neurological conditions.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
@@ -184,7 +174,7 @@ export default function DoctorInBhubaneswarPage() {
               <div className="flex flex-wrap gap-5">
                 {[
                   { icon: Shield, text: 'IMS & SUM Hospital Faculty' },
-                  { icon: Users, text: '5000+ Patients Treated' },
+                  { icon: Users, text: 'Patients from across Odisha' },
                   { icon: Award, text: 'DM Neurology Specialist' },
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex items-center gap-1.5 text-sm text-neutral-500 font-outfit">
@@ -213,8 +203,7 @@ export default function DoctorInBhubaneswarPage() {
                   <span className="gradient-text">IMS &amp; SUM Hospital</span>
                 </h2>
                 <p className="text-neutral-600 leading-relaxed mb-4 font-outfit">
-                  IMS &amp; SUM Hospital, Bhubaneswar is among Odisha&apos;s most respected
-                  tertiary-care institutions. Dr. Manasi Das serves as Assistant Professor in its
+                  IMS &amp; SUM Hospital, Bhubaneswar is a tertiary-care teaching hospital. Dr. Manasi Das serves as Assistant Professor in its
                   Neurology department — bringing advanced diagnostic expertise and research-backed
                   treatment to patients across the state.
                 </p>
