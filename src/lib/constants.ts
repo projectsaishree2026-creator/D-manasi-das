@@ -1,3 +1,5 @@
+import { BLOG_ARTICLES, readingTime } from './blogContent'
+
 export const SITE_CONFIG = {
   name: 'Dr. Manasi Das',
   title: 'Dr. Manasi Das — Expert Neurologist in Cuttack, Odisha',
@@ -18,11 +20,13 @@ export const SITE_CONFIG = {
     website: 'https://www.saishreepolyclinic.com/',
     doctorProfileUrl: 'https://www.saishreepolyclinic.com/doctors/dr-manasi-das',
     placeId: 'ChIJ2TOgzagTGToR7Sbpbc3FlhI',
+    // From the clinic's own Google Maps directions link (saishreepolyclinic.com/contact)
+    geo: { lat: 20.4770033, lng: 85.8854868 },
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=Sai+Shree+Polyclinic+Cuttack&query_place_id=ChIJ2TOgzagTGToR7Sbpbc3FlhI',
     reviewsUrl: 'https://search.google.com/local/reviews?placeid=ChIJ2TOgzagTGToR7Sbpbc3FlhI',
     mapUrl:
-      'https://maps.google.com/maps?q=Sai+Shree+Polyclinic,+Kathagola+Rd,+near+Shreema+Hospital,+Mangalabag,+Cuttack,+Odisha+753001&t=&z=15&ie=UTF8&iwloc=&output=embed',
+      'https://maps.google.com/maps?q=20.4770033,85.8854868&t=&z=16&ie=UTF8&iwloc=&output=embed',
   },
   hospital: {
     name: 'IMS & SUM Hospital',
@@ -200,96 +204,92 @@ export const TESTIMONIALS = [
   },
 ]
 
-export const BLOGS = [
+// Listing data for the blog. Full article bodies live in ./blogContent.ts.
+const BLOG_LIST = [
   {
     slug: 'warning-signs-of-stroke',
     title: 'FAST: Know the Warning Signs of Stroke',
     excerpt:
-      'Every minute counts during a stroke. Learn the FAST acronym — Face drooping, Arm weakness, Speech difficulty, Time to call — and how early action saves lives.',
+      'Every minute counts during a stroke. Learn the FAST test — Face drooping, Arm weakness, Speech difficulty, Time to call 108 — and what to do while help is on the way.',
     category: 'Stroke',
-    readTime: '5 min read',
     date: 'June 12, 2024',
     image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&fm=webp',
-    content: `Stroke is a medical emergency that occurs when blood supply to part of the brain is cut off. The FAST acronym helps identify stroke symptoms rapidly...`,
   },
   {
     slug: 'living-with-parkinsons',
     title: "Living with Parkinson's: A Guide for Patients & Families",
     excerpt:
-      "A Parkinson's diagnosis is life-changing — but it doesn't have to stop you from living well. Dr. Das shares practical strategies for managing symptoms and maintaining independence.",
+      "A Parkinson's diagnosis is life-changing, but it doesn't have to stop you living well. Symptoms, treatment options, exercise and practical tips for patients and caregivers.",
     category: "Parkinson's",
-    readTime: '7 min read',
     date: 'May 28, 2024',
     image: 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=600&q=80&fm=webp',
-    content: `Parkinson's Disease is a progressive neurological condition, but with the right management, patients can maintain quality of life...`,
   },
   {
     slug: 'migraine-triggers-and-prevention',
     title: 'Migraine Triggers: Identify Yours & Take Control',
     excerpt:
-      'Understanding your personal migraine triggers is the first step to freedom from debilitating headaches. Dr. Das explains common triggers and evidence-based prevention strategies.',
+      'Understanding your migraine triggers is the first step to fewer attacks. Common triggers, how to keep a headache diary, treatment and prevention, and when a headache is urgent.',
     category: 'Migraine',
-    readTime: '6 min read',
     date: 'May 10, 2024',
     image: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=600&q=80&fm=webp',
-    content: `Migraines affect 1 in 7 people worldwide. Identifying and managing triggers can dramatically reduce attack frequency...`,
   },
   {
     slug: 'epilepsy-myths-debunked',
     title: 'Epilepsy Myths Debunked: What You Need to Know',
     excerpt:
-      'Misinformation about epilepsy can be dangerous. Dr. Das separates fact from fiction to help patients and families make informed decisions about seizure care.',
+      'Misinformation about epilepsy can be dangerous. Seven common myths, the facts behind them, and the correct first aid for a seizure — including when to call 108.',
     category: 'Epilepsy',
-    readTime: '5 min read',
     date: 'April 22, 2024',
     image: 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&q=80&fm=webp',
-    content: `Epilepsy is one of the most misunderstood neurological conditions. Let's address common myths...`,
   },
   {
+    // Slug kept for existing links; title and content are no longer promotional.
     slug: 'best-neurologist-in-cuttack',
-    title: 'Why Cuttack Patients Trust Dr. Manasi Das for Expert Neurological Care',
+    title: "When to See a Neurologist in Cuttack: A Patient's Guide",
     excerpt:
-      'Cuttack residents now have specialist neurological care close to home. Learn how Dr. Manasi Das approaches brain and nerve conditions at Sai Shree Polyclinic, Cuttack, Odisha.',
+      'Not sure whether your symptoms need a neurologist? What neurologists treat, which symptoms to watch for, how to prepare, and what happens at a consultation in Cuttack.',
     category: 'Local Health',
-    readTime: '4 min read',
     date: 'March 15, 2025',
     image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&fm=webp',
-    content: `Finding a trusted neurologist in Cuttack can make all the difference when managing complex neurological conditions. Dr. Manasi Das at Sai Shree Polyclinic, Cuttack combines academic excellence with compassionate patient care, so patients can receive specialist neurological treatment close to home.`,
   },
   {
     slug: 'stroke-treatment-cuttack-odisha',
     title: 'Stroke Treatment in Cuttack: What To Do in the Critical First Hour',
     excerpt:
-      "Every second counts after a stroke. Dr. Manasi Das, neurologist in Cuttack, explains what you must do in the first 60 minutes to maximise recovery outcomes for stroke patients in Odisha.",
+      'Fast action after a stroke protects the brain. A step-by-step guide for families in Cuttack and Odisha: recognise it, call 108, reach a hospital that can scan, and what to avoid.',
     category: 'Stroke',
-    readTime: '6 min read',
     date: 'February 20, 2025',
     image: 'https://images.unsplash.com/photo-1576671081837-49000212a370?w=600&q=80&fm=webp',
-    content: `Stroke is one of the leading causes of disability in Odisha. Acting fast with the FAST protocol — Face drooping, Arm weakness, Speech difficulty, Time to call — can save lives and limit damage. Dr. Manasi Das at Sai Shree Polyclinic, Cuttack provides expert stroke assessment and post-stroke rehabilitation planning.`,
   },
   {
     slug: 'epilepsy-doctor-odisha',
     title: 'Living with Epilepsy in Odisha: What Every Patient Should Know',
     excerpt:
-      'Epilepsy affects millions across India, including many in Odisha who go undiagnosed. Dr. Manasi Das, epilepsy specialist in Cuttack, shares what patients and families need to know about seizure management.',
+      'Diagnosis, taking medicines correctly, seizure triggers, safety, driving, work and pregnancy — practical advice for people with epilepsy and their families in Odisha.',
     category: 'Epilepsy',
-    readTime: '7 min read',
     date: 'January 10, 2025',
     image: 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&q=80&fm=webp',
-    content: `Epilepsy affects approximately 1 in 100 people in India. In Odisha, access to specialist epilepsy care remains limited — but Dr. Manasi Das at Sai Shree Polyclinic, Cuttack provides expert EEG interpretation, precise anti-epileptic therapy, and long-term seizure management for patients across the state.`,
   },
   {
     slug: 'migraine-headache-specialist-bhubaneswar',
     title: 'Chronic Migraine Relief in Bhubaneswar: When to See a Specialist',
     excerpt:
-      "Not all headaches are the same. If you've been suffering from recurring migraines near Bhubaneswar, Dr. Manasi Das at IMS & SUM Hospital explains when it's time to seek specialist neurological care.",
+      "Not all headaches are the same. What chronic migraine is, the warning signs that need urgent care, and the treatments a neurologist in Bhubaneswar or Cuttack can offer.",
     category: 'Migraine',
-    readTime: '5 min read',
     date: 'December 5, 2024',
     image: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=600&q=80&fm=webp',
-    content: `More than 150 million headache days are experienced by Indians every year. For patients near Bhubaneswar dealing with chronic migraine, Dr. Manasi Das at IMS & SUM Hospital offers evidence-based migraine treatment including trigger identification, acute therapy, and long-term preventive regimens.`,
   },
 ]
+
+export const BLOGS = BLOG_LIST.map((b) => {
+  const article = BLOG_ARTICLES[b.slug]
+  return {
+    ...b,
+    readTime: article ? `${readingTime(article).minutes} min read` : '3 min read',
+    updated: article?.updated,
+  }
+})
+
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },

@@ -2,12 +2,12 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, Calendar, Clock, Tag, Phone } from 'lucide-react'
-import PageHeader from '@/components/common/PageHeader'
+import { ArrowLeft, ArrowRight, Calendar, CheckCircle2, Clock, Phone } from 'lucide-react'
 import CTA from '@/components/sections/home/CTA'
-import { BLOGS, SITE_CONFIG } from '@/lib/constants'
+import { BLOGS, SERVICES, SITE_CONFIG } from '@/lib/constants'
+import { BLOG_ARTICLES } from '@/lib/blogContent'
 import { pageMetadata } from '@/seo/metadata'
-import { getBlogPostingStructuredData, jsonLd } from '@/seo/structuredData'
+import { getBlogPostingStructuredData, getFAQStructuredData, jsonLd } from '@/seo/structuredData'
 
 /** Trim to a search-snippet length at a word boundary. */
 function clip(text: string, max = 158) {
@@ -39,7 +39,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function BlogDetailPage({ params }: Props) {
   const blog = BLOGS.find((b) => b.slug === params.slug)
   if (!blog) notFound()
-  const others = BLOGS.filter((b) => b.slug !== params.slug).slice(0, 2)
+  const article = BLOG_ARTICLES[blog.slug]
+  // Prefer related reading in the same category, then fill with the rest.
+  const others = [
+    ...BLOGS.filter((b) => b.slug !== blog.slug && b.category === blog.category),
+    ...BLOGS.filter((b) => b.slug !== blog.slug && b.category !== blog.category),
+  ].slice(0, 3)
+  const related = (article?.relatedServices ?? [])
+    .map((slug) => SERVICES.find((s) => s.slug === slug))
+    .filter((s): s is (typeof SERVICES)[number] => Boolean(s))
 
   return (
     <>
@@ -47,6 +55,12 @@ export default function BlogDetailPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(getBlogPostingStructuredData(blog)) }}
       />
+      {article && article.faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(getFAQStructuredData(article.faqs)) }}
+        />
+      )}
       <div style={{ marginTop: 'var(--navbar-height)' }} className="relative page-bg">
         <div className="page-bg-overlay py-16 md:py-24">
           <div className="container-custom">
@@ -54,8 +68,9 @@ export default function BlogDetailPage({ params }: Props) {
             <h1 className="heading-lg text-white max-w-3xl leading-tight mb-5 font-outfit">
               {blog.title}
             </h1>
-            <div className="flex items-center gap-6 text-[#BAE6FD] text-sm font-outfit">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[#BAE6FD] text-sm font-outfit">
               <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{blog.date}</span>
+              {blog.updated && <span>Updated {blog.updated}</span>}
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" />{blog.readTime}</span>
             </div>
           </div>
@@ -72,16 +87,73 @@ export default function BlogDetailPage({ params }: Props) {
               </Link>
 
               <div className="relative h-72 rounded-2xl overflow-hidden mb-8 bg-neutral-100">
-                <Image src={blog.image} alt={blog.title} fill className="object-cover" sizes="100vw" />
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 66vw, 100vw"
+                  priority
+                />
               </div>
 
-              <div className="prose prose-lg prose-neutral max-w-none">
-                <p className="text-neutral-600 leading-relaxed text-base">{blog.excerpt}</p>
-                <p className="text-neutral-600 leading-relaxed text-base mt-4">{blog.content}</p>
-                <p className="text-neutral-600 leading-relaxed text-base mt-4">
-                  For personalised advice about your neurological health, consult Dr. Manasi Das at
-                  Sai Shree Polyclinic, Cuttack. Early diagnosis and prompt treatment significantly
-                  improve outcomes for most neurological conditions.
+              <div className="font-outfit">
+                <p className="text-neutral-700 leading-relaxed text-lg mb-8">{article?.intro ?? blog.excerpt}</p>
+
+                {article?.sections.map((section) => (
+                  <section key={section.heading} className="mb-8">
+                    <h2 className="text-2xl font-bold text-neutral-900 mb-3 tracking-tight">{section.heading}</h2>
+                    {section.paragraphs.map((p, i) => (
+                      <p key={i} className="text-neutral-600 leading-relaxed text-base mb-3">{p}</p>
+                    ))}
+                    {section.bullets && (
+                      <ul className="mt-2 space-y-2">
+                        {section.bullets.map((b) => (
+                          <li key={b} className="flex gap-2.5 text-neutral-600 leading-relaxed text-base">
+                            <CheckCircle2 className="w-5 h-5 text-[#0EA5E9] flex-shrink-0 mt-0.5" />
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                ))}
+
+                {article && article.faqs.length > 0 && (
+                  <section className="mb-8">
+                    <h2 className="text-2xl font-bold text-neutral-900 mb-4 tracking-tight">Frequently asked questions</h2>
+                    <div className="space-y-4">
+                      {article.faqs.map((f) => (
+                        <div key={f.q} className="rounded-xl border border-neutral-200 p-5">
+                          <h3 className="font-semibold text-neutral-900 mb-1.5">{f.q}</h3>
+                          <p className="text-neutral-600 text-sm leading-relaxed">{f.a}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                {related.length > 0 && (
+                  <section className="mb-8 rounded-2xl bg-sky-50 border border-sky-100 p-6">
+                    <h2 className="text-lg font-bold text-neutral-900 mb-3">Related treatment</h2>
+                    <div className="flex flex-wrap gap-3">
+                      {related.map((s) => (
+                        <Link
+                          key={s.slug}
+                          href={`/services/${s.slug}`}
+                          className="inline-flex items-center gap-2 rounded-full bg-white border border-sky-200 px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100 transition-colors"
+                        >
+                          {s.title} care in Cuttack <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      ))}
+                    </div>
+                  </section>
+                )}
+
+                <p className="text-xs text-neutral-400 leading-relaxed border-t border-neutral-100 pt-4">
+                  This article is general health information and is not a substitute for a medical
+                  consultation. In an emergency such as a suspected stroke or a seizure lasting more than
+                  5 minutes, call 108 and go to the nearest hospital emergency department.
                 </p>
               </div>
 
@@ -91,7 +163,9 @@ export default function BlogDetailPage({ params }: Props) {
                   <span className="text-2xl font-bold text-white font-outfit">M</span>
                 </div>
                 <div>
-                  <p className="font-bold text-neutral-900 text-sm font-outfit">Dr. Manasi Das</p>
+                  <p className="font-bold text-neutral-900 text-sm font-outfit">
+                    <Link href="/about" className="hover:text-sky-700">Dr. Manasi Das</Link>
+                  </p>
                   <p className="text-[#0EA5E9] text-xs font-medium mb-2 font-outfit">MD (Medicine) · DM (Neurology)</p>
                   <p className="text-neutral-500 text-xs font-outfit">Asst. Professor at IMS &amp; SUM Hospital · Consulting Neurologist, Sai Shree Polyclinic, Cuttack</p>
                 </div>
@@ -102,7 +176,9 @@ export default function BlogDetailPage({ params }: Props) {
             <aside className="space-y-6">
               <div className="bg-gradient-to-br from-[#0369A1] to-[#0EA5E9] rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-base mb-2 font-outfit">Have Questions?</h3>
-                <p className="text-sky-100 text-sm mb-4">Consult Dr. Manasi Das for expert guidance.</p>
+                <p className="text-sky-100 text-sm mb-4">
+                  Book a consultation with Dr. Manasi Das at Sai Shree Polyclinic, Cuttack (Mon–Sat, 9 AM–7 PM).
+                </p>
                 <a href={`tel:${SITE_CONFIG.phone[0]}`} className="flex items-center justify-center gap-2 w-full py-3 bg-white text-sky-700 rounded-full font-semibold text-sm">
                   <Phone className="w-4 h-4" /> Call Now
                 </a>

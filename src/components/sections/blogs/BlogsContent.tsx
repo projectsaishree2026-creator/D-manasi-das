@@ -101,36 +101,57 @@ export default function BlogsContent() {
           {/* Remaining articles — stacked on right */}
           <div className="flex flex-col gap-4">
             {rest.slice(0, 2).map((blog) => (
-              <motion.div key={blog.slug} variants={scaleIn}>
-                <Link
-                  href={`/blogs/${blog.slug}`}
-                  className="group flex gap-4 card-base p-4 hover:-translate-y-0.5 transition-all duration-200"
-                  aria-label={`Read article: ${blog.title}`}
-                >
-                  <div className="relative w-24 h-20 bg-neutral-100 rounded-xl overflow-hidden flex-shrink-0">
-                    <Image
-                      src={blog.image}
-                      alt={blog.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="96px"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <span className="badge mb-2 text-[10px]">{blog.category}</span>
-                    <h3 className="font-bold text-neutral-900 text-sm group-hover:text-[#0369A1] transition-colors font-outfit leading-snug line-clamp-2">
-                      {blog.title}
-                    </h3>
-                    <div className="flex items-center gap-3 text-xs text-neutral-400 mt-2 font-outfit">
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{blog.readTime}</span>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
+              <CompactCard key={blog.slug} blog={blog} />
             ))}
           </div>
         </motion.div>
+
+        {/* All remaining articles, so every post is linked from the blog index */}
+        {rest.length > 2 && (
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {rest.slice(2).map((blog) => (
+              <CompactCard key={blog.slug} blog={blog} />
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
+  )
+}
+
+function CompactCard({ blog }: { blog: (typeof BLOGS)[number] }) {
+  return (
+    <motion.div variants={scaleIn}>
+      <Link
+        href={`/blogs/${blog.slug}`}
+        className="group flex gap-4 card-base p-4 hover:-translate-y-0.5 transition-all duration-200"
+        aria-label={`Read article: ${blog.title}`}
+      >
+        <div className="relative w-24 h-20 bg-neutral-100 rounded-xl overflow-hidden flex-shrink-0">
+          <Image
+            src={blog.image}
+            alt={blog.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            sizes="96px"
+          />
+        </div>
+        <div className="flex-1 min-w-0">
+          <span className="badge mb-2 text-[10px]">{blog.category}</span>
+          <h3 className="font-bold text-neutral-900 text-sm group-hover:text-[#0369A1] transition-colors font-outfit leading-snug line-clamp-2">
+            {blog.title}
+          </h3>
+          <div className="flex items-center gap-3 text-xs text-neutral-400 mt-2 font-outfit">
+            <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{blog.readTime}</span>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   )
 }

@@ -117,10 +117,11 @@ export function getClinicStructuredData() {
     medicalSpecialty: 'Neurology',
     priceRange: '₹₹',
     address: CLINIC_ADDRESS,
+    // Pin of the clinic's Google Business Profile (place_id in SITE_CONFIG.clinic.placeId)
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 20.4625,
-      longitude: 85.883,
+      latitude: SITE_CONFIG.clinic.geo.lat,
+      longitude: SITE_CONFIG.clinic.geo.lng,
     },
     openingHoursSpecification: CLINIC_HOURS,
     hasMap: SITE_CONFIG.clinic.mapsUrl,
@@ -219,6 +220,7 @@ export function getBlogPostingStructuredData(blog: {
   date: string
   image: string
   category: string
+  updated?: string
 }) {
   const url = `${URL}/blogs/${blog.slug}`
   return {
@@ -231,6 +233,7 @@ export function getBlogPostingStructuredData(blog: {
     mainEntityOfPage: url,
     image: blog.image,
     datePublished: isoDate(blog.date),
+    dateModified: isoDate(blog.updated ?? blog.date),
     articleSection: blog.category,
     inLanguage: 'en-IN',
     author: { '@type': 'Physician', '@id': PHYSICIAN_ID, name: DOCTOR.name, url: `${URL}/about` },
